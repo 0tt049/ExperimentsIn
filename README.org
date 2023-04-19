@@ -1,4 +1,4 @@
-#+title: ExperimentsIn
+#+title: Experiments In
 #+author: Otavio Coelho
 #+date: <2023-04-17 seg>
 #+OPTIONS: toc:
