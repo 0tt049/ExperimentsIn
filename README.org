@@ -3,7 +3,8 @@
 #+date: <2023-04-17 seg>
 #+OPTIONS: toc:
 
-** A bunch of stuff I'm interested in
+A bunch of stuff I'm interested in
+
 ** Experiments in Ray Tracing
 :PROPERTIES:
 :header-args:ruby: :tangle Raytracing/raytracer.rb :comments link
@@ -54,7 +55,7 @@ ver = hor.reverse
 $stdout << "P3\n" << image_width << " " << image_height << "\n255\n"
 #+end_src
 
-And now for the fun part. Think of this as we were creating a 2D array of [[wikipedia:Tuple][triplets]]. Line by line, and pixel by pixel. Each pixel is described by 3 integers, each of those is a RGB value. Notice that we first get a floating number between 0.0 and 1.0, that has to be normalized back to an integer between 0 and 255. And lastly ~$stdout~ spits out our 3 values, go down a line, and iterate again.
+And now for the fun part. Think of this as we were creating a 2D array of [[https://en.wikipedia.org/wiki/Tuple][3-tuple]]. Line by line, and pixel by pixel. Each pixel is described by 3 integers, each of those is a RGB value. Notice that we first get a floating number between 0.0 and 1.0, that has to be normalized back to an integer between 0 and 255. And lastly ~$stdout~ spits out our 3 values, go down a line, and iterate again.
 
 #+begin_src ruby
 ver.each do |ypx|
