@@ -76,12 +76,12 @@ end
 The creating-image-file part gets dealt by the command line. At least for now.
 
 #+begin_src shell
-$ ruby my_first_raytracer.rb > my_first_render.ppm
+$ ruby raytracer.rb > gradient.ppm
 #+end_src
 
 And since most places don't know what to do with an PPM image file, we can must also convert it to whatever file format you prefer. I'm converting it to JPEG using ImageMagick.
 
 #+begin_src shell
-$ convert my_first_render.ppm my_first_render.jpg
+$ convert gradient.ppm gradient.jpg
 #+end_src
-[[./ruby_gradient.jpg]]
+[[./Raytracing/gradient.jpg]]
