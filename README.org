@@ -1,0 +1,61 @@
+#+title: ExperimentsIn
+#+author: Otavio Coelho
+#+date: <2023-04-17 seg>
+#+OPTIONS: toc:
+
+* I bunch of stuff I'm interested in
+** Experiments in Ray Tracing
+*** A port of the book [[https:raytracing.github.io/books/RayTracingInOneWeekend.html][Ray Tracing in One Weekend]] by [[https://github.com/petershirley][Peter Shirley]] to the Ruby programming language.
+
+**** Introduction
+
+As far as I know there are two ways one could programmatically generate an image. By having the program, while it is running, produce a window and in it the image. Or, by having the program produce the image and save it in a image file (JPEG, PNG, TIFF, etc...), which can then be opened by an image viewer. This experiment deals with the latter.
+
+I'll be guided the book Ray Tracing in One Weekend, it describes the processes of writing a Ray Tracer using C++. I am not a C++ programmer though, and do not think that rewriting the code shown in the book as being a very effective learning methodology. Therefore I'll try to re-implement the Ray Tracer in Ruby.
+
+**** The PPM image format
+
+There are many image formats available, most of them are very complex, PPM is the format used throughout the book.
+
+#+BEGIN_QUOTE
+P3  # Set colors to ASCII
+
+3 2 # Set file to 3 columns and 2 rows
+255 # Set max color to 255
+
+# Image content
+
+255   0   0       0 255   0       0   0 255
+255 255   0     255 255 255       0   0   0
+#+END_QUOTE
+
+The code above would produce a 3x2 pixel image of red, green, blue, yellow, white, and black colors.
+
+**** First gradient in Ruby
+
+#+begin_src ruby :hlines yes :tangle Raytracing/raytracer.rb :comments link
+# Image
+
+image_width = 256
+image_height = 256
+
+hor = (0..(image_width - 1)).to_a
+ver = hor.reverse
+
+# Render
+$stdout << "P3\n" << image_width << " " << image_height << "\n255\n"
+
+ver.each do |ypx|
+  hor.each do |xpx|
+    r = xpx.to_f / (image_width - 1)
+    g = ypx.to_f / (image_height - 1)
+    b = 0.25
+
+    ir = (r * 255.999).to_i
+    ig = (g * 255.999).to_i
+    ib = (b * 255.999).to_i
+
+    $stdout << ir << " " << ig << " " << ib << "\n"
+  end
+end
+#+end_src
