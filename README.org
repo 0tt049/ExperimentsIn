@@ -72,7 +72,6 @@ ver.each do |ypx|
 end
 #+end_src
 
-<<<<<<< HEAD
 The creating-image-file part gets dealt by the command line. At least for now.
 
 #+begin_src shell
@@ -85,9 +84,3 @@ And since most places don't know what to do with an PPM image file, we can must 
 $ convert my_first_render.ppm my_first_render.jpg
 #+end_src
 [[./ruby_gradient.jpg]]
-=======
-#+CAPTION: My first Ruby render :rocket:
-[[./ruby_gradient.jpg]]
-
-🚀🚀🚀
->>>>>>> origin/master
