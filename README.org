@@ -17,7 +17,7 @@ I'll be guided the book Ray Tracing in One Weekend, it describes the processes o
 
 There are many image formats available, most of them are very complex, PPM is the format used throughout the book.
 
-#+BEGIN_QUOTE
+#+begin_src
 P3  # Set colors to ASCII
 
 3 2 # Set file to 3 columns and 2 rows
@@ -30,6 +30,7 @@ P3  # Set colors to ASCII
 #+END_QUOTE
 
 The code above would produce a 3x2 pixel image of red, green, blue, yellow, white, and black colors.
+#+end_src
 
 **** First gradient in Ruby
 
