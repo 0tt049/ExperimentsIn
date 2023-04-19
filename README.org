@@ -85,3 +85,45 @@ And since most places don't know what to do with an PPM image file, we can must 
 $ convert gradient.ppm gradient.jpg
 #+end_src
 [[./Raytracing/gradient.jpg]]
+
+**** A bit of refactoring
+
+This section of the book shows the creation of a ~vec3~ class that could represent a coordinate or a RGB value. I'm sticking with Ruby's ~Vector~ class for now. I'm using this class to implement a ~write_color~ helper function.
+
+#+begin_src ruby :tangle ./Raytracing/color.rb
+require 'matrix'
+def write_color(pixel_color, out = $stdout)
+  raise TypeError unless pixel_color.is_a? Vector
+
+  out << (pixel_color[0] * 255.999).to_i << " " <<
+    (pixel_color[1] * 255.999).to_i << " " <<
+    (pixel_color[2] * 255.999).to_i << "\n"
+end
+#+end_src
+
+And now we can use ~write_color~ inside our Ray Tracer.
+
+#+begin_src ruby :tangle ./Raytracing/raytracer_02.rb :
+require_relative 'color'
+
+image_width = 256
+image_height = 256
+hor = (0..(image_width - 1)).to_a
+ver = hor.reverse
+
+$stdout << "P3\n" << image_width << " " << image_height << "\n255\n"
+
+ver.each do |ypx|
+  hor.each do |xpx|
+    color_arr = [
+      (xpx.to_f / (image_width - 1)),
+      (ypx.to_f / (image_height - 1)),
+      0.25
+    ]
+    pixel_color = Vector.elements(color_arr)
+    write_color(pixel_color)
+  end
+end
+#+end_src
+
+**** Rays, Camera and Background
