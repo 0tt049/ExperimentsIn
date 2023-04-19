@@ -59,3 +59,6 @@ ver.each do |ypx|
   end
 end
 #+end_src
+
+#+CAPTION: My first Ruby render :rocket:
+[[./Raytracing/forth_image.ppm]]
