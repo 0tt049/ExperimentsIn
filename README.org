@@ -1,9 +1,9 @@
-#+title: ExperimentsIn
+#+title: Experiments In
 #+author: Otavio Coelho
 #+date: <2023-04-17 seg>
 #+OPTIONS: toc:
 
-* I bunch of stuff I'm interested in
+** A bunch of stuff I'm interested in
 ** Experiments in Ray Tracing
 :PROPERTIES:
 :header-args:ruby: :tangle Raytracing/raytracer.rb :comments link
@@ -72,6 +72,7 @@ ver.each do |ypx|
 end
 #+end_src
 
+<<<<<<< HEAD
 The creating-image-file part gets dealt by the command line. At least for now.
 
 #+begin_src shell
@@ -84,3 +85,9 @@ And since most places don't know what to do with an PPM image file, we can must 
 $ convert my_first_render.ppm my_first_render.jpg
 #+end_src
 [[./ruby_gradient.jpg]]
+=======
+#+CAPTION: My first Ruby render :rocket:
+[[./ruby_gradient.jpg]]
+
+🚀🚀🚀
+>>>>>>> origin/master
