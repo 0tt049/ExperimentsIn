@@ -3,7 +3,7 @@
 #+date: <2023-04-17 seg>
 #+OPTIONS: toc:
 
-* I bunch of stuff I'm interested in
+** A bunch of stuff I'm interested in
 ** Experiments in Ray Tracing
 *** A port of the book [[https:raytracing.github.io/books/RayTracingInOneWeekend.html][Ray Tracing in One Weekend]] by [[https://github.com/petershirley][Peter Shirley]] to the Ruby programming language.
 
