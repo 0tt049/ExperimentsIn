@@ -61,4 +61,5 @@ end
 #+end_src
 
 #+CAPTION: My first Ruby render :rocket:
-[[./Raytracing/forth_image.ppm]]
+[[./ruby_gradient.jpg]]
+:rocket:
