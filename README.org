@@ -5,18 +5,24 @@
 
 * I bunch of stuff I'm interested in
 ** Experiments in Ray Tracing
-*** A port of the book [[https:raytracing.github.io/books/RayTracingInOneWeekend.html][Ray Tracing in One Weekend]] by [[https://github.com/petershirley][Peter Shirley]] to the Ruby programming language.
+:PROPERTIES:
+:header-args:ruby: :tangle Raytracing/raytracer.rb :comments link
+:header-args: :hlines yes
+:END:
+
+A port of the book [[https:raytracing.github.io/books/RayTracingInOneWeekend.html][Ray Tracing in One Weekend]] by [[https://github.com/petershirley][Peter Shirley]] to the Ruby programming language.
 
 **** Introduction
 
-As far as I know there are two ways one could programmatically generate an image. By having the program, while it is running, produce a window and in it the image. Or, by having the program produce the image and save it in a image file (JPEG, PNG, TIFF, etc...), which can then be opened by an image viewer. This experiment deals with the latter.
+As far as I know there are two ways one could programmatically generate an image. By having the program, while it is running, produce a window and, in it, the image. Or, by having the program produce the image and save it in a image file (JPEG, PNG, TIFF, etc...), which can then be opened by an image viewer. This experiment deals with the latter.
 
-I'll be guided the book Ray Tracing in One Weekend, it describes the processes of writing a Ray Tracer using C++. I am not a C++ programmer though, and do not think that rewriting the code shown in the book as being a very effective learning methodology. Therefore I'll try to re-implement the Ray Tracer in Ruby.
+I'll be following the book *Ray Tracing in One Weekend*, it describes the processes of writing a Ray Tracer using C++. I am not a C++ programmer though, and do not think that simply rewriting code shown in a book as being a very effective learning methodology. Therefore I'll try to re-implement this Ray Tracer using Ruby.
 
 **** The PPM image format
 
-There are many image formats available, most of them are very complex, PPM is the format used throughout the book.
-The code bellow (PPM image file) would produce a 3x2 pixel image of red, green, blue, yellow, white, and black colors.
+There are many image formats available, most of them are very complex, PPM will be the format used throughout this experiment. Maybe I'll change it later.
+
+The code bellow (PPM image file) would produce a 3x2 pixel image of red, green, blue, yellow, white, and black colors. I commented a few lines in the snippet bellow to describe the PPM image format.
 
 #+begin_src
 P3  # Set colors to ASCII
@@ -33,18 +39,24 @@ P3  # Set colors to ASCII
 
 **** First gradient in Ruby
 
-#+begin_src ruby :hlines yes :tangle Raytracing/raytracer.rb :comments link
-# Image
+Let's begin with a simple image gradient. First we set the image size, then we store both dimensions as two arrays that will be iterated on later.
 
+#+begin_src ruby
 image_width = 256
 image_height = 256
-
 hor = (0..(image_width - 1)).to_a
 ver = hor.reverse
+#+end_src
 
-# Render
+~$stdout~ is our door to the outside world, and whatever gets out of this file I'll then pipe to a new file. And again, the snippet bellow sets up our image file as per PPM requirements.
+
+#+begin_src ruby
 $stdout << "P3\n" << image_width << " " << image_height << "\n255\n"
+#+end_src
 
+And now for the fun part. Think of this as we were creating a 2D array of [[wikipedia:Tuple][triplets]]. Line by line, and pixel by pixel. Each pixel is described by 3 integers, each of those is a RGB value. Notice that we first get a floating number between 0.0 and 1.0, that has to be normalized back to an integer between 0 and 255. And lastly ~$stdout~ spits out our 3 values, go down a line, and iterate again.
+
+#+begin_src ruby
 ver.each do |ypx|
   hor.each do |xpx|
     r = xpx.to_f / (image_width - 1)
@@ -60,8 +72,15 @@ ver.each do |ypx|
 end
 #+end_src
 
-#+CAPTION: My first Ruby render :rocket:
-[[./ruby_gradient.jpg]]
-#+begin_src md
-:rocket::rocket::rocket:
+The creating-image-file part gets dealt by the command line. At least for now.
+
+#+begin_src shell
+$ ruby my_first_raytracer.rb > my_first_render.ppm
 #+end_src
+
+And since most places don't know what to do with an PPM image file, we can must also convert it to whatever file format you prefer. I'm converting it to JPEG using ImageMagick.
+
+#+begin_src shell
+$ convert my_first_render.ppm my_first_render.jpg
+#+end_src
+[[./ruby_gradient.jpg]]
