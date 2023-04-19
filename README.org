@@ -62,6 +62,4 @@ end
 
 #+CAPTION: My first Ruby render :rocket:
 [[./ruby_gradient.jpg]]
-#+begin_src md
 :rocket::rocket::rocket:
-#+end_src
