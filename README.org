@@ -16,6 +16,7 @@ I'll be guided the book Ray Tracing in One Weekend, it describes the processes o
 **** The PPM image format
 
 There are many image formats available, most of them are very complex, PPM is the format used throughout the book.
+The code bellow (PPM image file) would produce a 3x2 pixel image of red, green, blue, yellow, white, and black colors.
 
 #+begin_src
 P3  # Set colors to ASCII
@@ -28,8 +29,6 @@ P3  # Set colors to ASCII
 255   0   0       0 255   0       0   0 255
 255 255   0     255 255 255       0   0   0
 #+END_QUOTE
-
-The code above would produce a 3x2 pixel image of red, green, blue, yellow, white, and black colors.
 #+end_src
 
 **** First gradient in Ruby
