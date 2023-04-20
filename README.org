@@ -131,6 +131,4 @@ end
 
 A ray is a vector, it has an origin and a direction. It can be described by the mathematical function:
 
-\begin{equation}
-P(t) = A + t*b
-\end{equation}
+$$P(t) = A + t*b$$
