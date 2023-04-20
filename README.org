@@ -1,7 +1,8 @@
 #+title: Experiments In
 #+author: Otavio Coelho
 #+date: <2023-04-17 seg>
-#+OPTIONS: toc:
+#+LATEX_HEADER: \usepackage[all]{xy}
+#+LATEX_HEADER: \usepackage{tikz}
 
 A bunch of stuff I'm interested in
 
@@ -129,6 +130,24 @@ end
 **** Rays, Camera and Background
 ***** Ray
 
-A ray is a vector, it has an origin and a direction. It can be described by the mathematical function:
+# A ray is a vector, it has an origin and a direction. It can be described by the mathematical function: $P(t) = A + tb$
 
-$$P(t) = A + t*b$$
+# \xymatrix{A & B\\
+#           C & D }
+
+# \draw (1,0) -- (0,0) -- (0,1) -- cycle;
+
+\setlength{\unitlength}{0.75mm}
+\begin{picture}(60,40)
+\put(30,20){\vector(1,0){30}}
+\put(30,20){\vector(4,1){20}}
+\put(30,20){\vector(3,1){25}}
+\put(30,20){\vector(2,1){30}}
+\put(30,20){\vector(1,2){10}}
+\thicklines
+\put(30,20){\vector(-4,1){30}}
+\put(30,20){\vector(-1,4){5}}
+\thinlines
+\put(30,20){\vector(-1,-1){5}}
+\put(30,20){\vector(-1,-4){5}}
+\end{picture}
