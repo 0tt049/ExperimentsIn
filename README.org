@@ -1,11 +1,10 @@
-#+title: Experiments In
-#+author: Otavio Coelho
-#+date: <2023-04-17 seg>
-#+LATEX_HEADER: \usepackage[all]{xy}
-#+LATEX_HEADER: \usepackage{tikz}
+#+TITLE: Experiments In
+#+SUBTITLE: A bunch of stuf I'm interested in.
+#+AUTHOR: Otavio Coelho
+#+LATEX_CLASS: article
+#+OPTIONS: toc:t
 
-A bunch of stuff I'm interested in
-
+* Experiments In
 ** Experiments in Ray Tracing
 :PROPERTIES:
 :header-args:ruby: :tangle Raytracing/raytracer.rb :comments link
@@ -14,13 +13,13 @@ A bunch of stuff I'm interested in
 
 A port of the book [[https:raytracing.github.io/books/RayTracingInOneWeekend.html][Ray Tracing in One Weekend]] by [[https://github.com/petershirley][Peter Shirley]] to the Ruby programming language.
 
-**** Introduction
+*** Introduction
 
 As far as I know there are two ways one could programmatically generate an image. By having the program, while it is running, produce a window and, in it, the image. Or, by having the program produce the image and save it in a image file (JPEG, PNG, TIFF, etc...), which can then be opened by an image viewer. This experiment deals with the latter.
 
 I'll be following the book *Ray Tracing in One Weekend*, it describes the processes of writing a Ray Tracer using C++. I am not a C++ programmer though, and do not think that simply rewriting code shown in a book as being a very effective learning methodology. Therefore I'll try to re-implement this Ray Tracer using Ruby.
 
-**** The PPM image format
+*** The PPM image format
 
 There are many image formats available, most of them are very complex, PPM will be the format used throughout this experiment. Maybe I'll change it later.
 
@@ -39,7 +38,7 @@ P3  # Set colors to ASCII
 #+END_QUOTE
 #+end_src
 
-**** First gradient in Ruby
+*** First gradient in Ruby
 
 Let's begin with a simple image gradient. First we set the image size, then we store both dimensions as two arrays that will be iterated on later.
 
@@ -87,7 +86,7 @@ $ convert gradient.ppm gradient.jpg
 #+end_src
 [[./Raytracing/gradient.jpg]]
 
-**** A bit of refactoring
+*** A bit of refactoring
 
 This section of the book shows the creation of a ~vec3~ class that could represent a coordinate or a RGB value. I'm sticking with Ruby's ~Vector~ class for now. I'm using this class to implement a ~write_color~ helper function.
 
@@ -127,27 +126,8 @@ ver.each do |ypx|
 end
 #+end_src
 
-**** Rays, Camera and Background
-***** Ray
+*** Rays, Camera and Background
+**** Ray
 
-# A ray is a vector, it has an origin and a direction. It can be described by the mathematical function: $P(t) = A + tb$
-
-# \xymatrix{A & B\\
-#           C & D }
-
-# \draw (1,0) -- (0,0) -- (0,1) -- cycle;
-
-\setlength{\unitlength}{0.75mm}
-\begin{picture}(60,40)
-\put(30,20){\vector(1,0){30}}
-\put(30,20){\vector(4,1){20}}
-\put(30,20){\vector(3,1){25}}
-\put(30,20){\vector(2,1){30}}
-\put(30,20){\vector(1,2){10}}
-\thicklines
-\put(30,20){\vector(-4,1){30}}
-\put(30,20){\vector(-1,4){5}}
-\thinlines
-\put(30,20){\vector(-1,-1){5}}
-\put(30,20){\vector(-1,-4){5}}
-\end{picture}
+A ray is a vector, it has an origin and a direction. It can be described by the mathematical function: $P(t) = A + tb$
+[[.Raytracing/drawing.png]]

@@ -1,0 +1,14 @@
+unitsize(3.5);
+pair A, B, C, O, Ti, Tj;
+O = (0,0);
+C = 100*dir(10);
+A = 40*dir(10);
+B = 60*dir(10);
+Ti = 80*dir(10);
+Tj = 20*dir(10);
+draw((O--C), dashed, Arrows(SimpleHead));
+draw((A--B), red+linewidth(1), Arrow(SimpleHead));
+dot(Tj); label("$t=-1$", Tj, N);
+dot(A); label("$A$", A, S); label("$t=0$", A, N);
+dot(B); label("$\overrightarrow{B}$", B, S); label("$t=1$", B, N);
+dot(Ti); label("$t=2$", Ti, N);
