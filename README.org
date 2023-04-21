@@ -130,4 +130,4 @@ end
 **** Ray
 
 A ray is a vector, it has an origin and a direction. It can be described by the mathematical function: $P(t) = A + tb$
-[[.Raytracing/drawing.png]]
+[[Raytracing/drawing.png]]
