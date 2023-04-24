@@ -12,3 +12,4 @@ dot(Tj); label("$t=-1$", Tj, N);
 dot(A); label("$A$", A, S); label("$t=0$", A, N);
 dot(B); label("$\overrightarrow{B}$", B, S); label("$t=1$", B, N);
 dot(Ti); label("$t=2$", Ti, N);
+draw(circle);
