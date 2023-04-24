@@ -44,3 +44,4 @@
 /Raytracing/doc
 .vscode/settings.json
 Raytracing/drawing.asy.log
+.solargraph.yml
