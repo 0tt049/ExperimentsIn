@@ -131,3 +131,43 @@ end
 
 A ray is a vector, it has an origin and a direction. It can be described by the mathematical function: $P(t) = A + tb$
 [[Raytracing/drawing.png]]
+
+#+begin_src ruby :tangle ./Raytracing/ray.rb
+require 'matrix'
+
+def ray(origin, direction, tim)
+  raise TypeError unless origin.is_a? Vector
+  raise TypeError unless direction.is_a? Vector
+
+  origin + (tim * direction)
+end
+#+end_src
+
+**** Sending Rays
+1. Calculate the ray from the eye to the pixel_color.
+2. Determine which objects the ray intersects.
+3. Compute a color for that intersection point.
+
+#+begin_src ruby :tangle ./Raytracing/raytracer_03.rb
+require_relative 'color'
+
+image_width = 256
+image_height = 256
+hor = (0..(image_width - 1)).to_a
+ver = hor.reverse
+
+$stdout << "P3\n" << image_width << " " << image_height << "\n255\n"
+
+ver.each do |ypx|
+  hor.each do |xpx|
+    color_arr = [
+      (xpx.to_f / (image_width - 1)),
+      (ypx.to_f / (image_height - 1)),
+      0.25
+    ]
+    pixel_color = Vector.elements(color_arr)
+    write_color(pixel_color)
+  end
+end
+
+#+end_src
